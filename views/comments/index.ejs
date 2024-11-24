@@ -1,0 +1,20 @@
+<%- include('../partials/head')%>
+
+    <%- include('../partials/navbar')%>
+        <section class="container mt-5 d-flex flex-column items-center justify-center rounded-lg p-5 border border-dark mx-auto">
+            <h1>Comments</h1>
+            <ul>
+                <hr>
+                <% for(let c of comments) {%>
+                    <li>
+                        <%=c.comment%> - <b>
+                                <%=c.username%>
+                            </b>
+                            <a href="/comments/<%= c.id %>">details</a>
+                    </li>
+                    <% }%>
+                    <hr>
+            </ul>
+            <a href="/comments/new"><button class="btn btn-outline-dark">New Comment</button></a>
+        </section>
+        <%- include('../partials/footer')%>
