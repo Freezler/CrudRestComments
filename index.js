@@ -102,7 +102,7 @@ app.delete('/comments/:id', (req, res) => {
 
 
 
-app.get('/tacos', (req, res) => {
+app.get('/', (req, res) => {
     res.send("GET /tacos response")
 })
 
@@ -115,6 +115,7 @@ app.listen(port, () => {
     console.log(`ON PORT ${port}!`)
 })
 
+module.exports = app;
 
 // GET /comments - list all comments
 // POST /comments - Create a new comment
