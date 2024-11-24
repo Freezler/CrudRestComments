@@ -21,26 +21,42 @@ app.set('view engine', 'ejs')
 let comments = [
     {
         id: uuid(),
-        username: 'Raymond',
-        comment: 'Cool crud app you built there !',
+        username: 'Joel',
+        comment: `I've struggled a long time with survivin', but no matter what you have to find something to fight for.`,
         lastUpdated: ''
     },
     {
         id: uuid(),
-        username: 'Anonymous',
-        comment: 'lol that is so funny! because its true',
+        username: 'The Oregon Trail',
+        comment: 'You have died of dysentery.',
         lastUpdated: ''
     },
     {
         id: uuid(),
-        username: 'Sk8erBoi',
-        comment: 'Plz delete your account, Todd',
+        username: 'Niko Bellic',
+        comment: 'War is where the young and stupid are tricked by the old and bitter into killing each other.',
         lastUpdated: ''
     },
     {
         id: uuid(),
-        username: 'general Pavlov',
+        username: 'general Nikolai Krukov',
         comment: 'All your base are belong to us',
+        lastUpdated: ''
+    },
+    {
+        id: uuid(),
+        username: 'Old Man',
+        comment: 'It’s dangerous to go alone, take this!',
+        lastUpdated: ''
+    }, {
+        id: uuid(),
+        username: 'Duke Nukem',
+        comment: `It's time to kick ass and chew bubblegum...and I'm all outta gum.`,
+        lastUpdated: ''
+    }, {
+        id: uuid(),
+        username: 'Solid Snake',
+        comment: `It's easy to forget what a sin is in the middle of a battlefield.`,
         lastUpdated: ''
     }
 ]

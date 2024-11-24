@@ -1,21 +1,21 @@
 <%- include('../partials/head')%>
 
     <%- include('../partials/navbar')%>
-        <section class="container mt-5 d-flex flex-column items-center justify-center rounded-lg border border-dark mx-auto px-5 py-3">
+        <section
+            class="container-fluid mt-5 d-flex flex-column items-center justify-center rounded-lg p-5 border border-dark mx-auto">
 
-            <h3>comment details</h3>
+            <h1>Comment details</h1>
             <hr class="w-100">
-            <p>editing comment with id: <%= comment.id %>
+            <p>details for comment with id: <%= comment.id %>
             </p>
 
-            <p class="bg-primary text-light p-4 rounded-lg">
+            <p class="bg-light text-dark p-4 rounded-lg">
                 <%= comment.comment %> <br>- <b>
-                    <%=comment.username %>
-                </b>
+                        <%=comment.username %>
+                    </b>
             </p>
             <hr class="w-100">
             <div class="d-flex ">
-
                 <a href="/comments/<%= comment.id%>/edit"><button class="btn  mx-1 btn-outline-dark">Edit</button></a>
                 <a href="/comments"><button class=" btn btn-outline-dark mx-1">Back</button></a>
                 <form method="POST" action="/comments/<%= comment.id %>?_method=DELETE">

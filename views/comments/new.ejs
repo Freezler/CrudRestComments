@@ -1,19 +1,24 @@
 <%- include('../partials/head')%>
     <%- include('../partials/navbar')%>
-        <section class="container mt-5 d-flex flex-column items-center justify-center rounded-lg p-5 border border-dark mx-auto">
+        <section
+            class="container-fluid mt-5 d-flex flex-column items-center justify-center rounded-lg p-5 border border-dark mx-auto">
             <h1>Make a new comment</h1>
             <form action="/comments" method="post">
                 <hr class="w-100">
                 <section>
-                    <label for="username" ><p class="m-0 " id="username">enter username:</p></label>
+                    <label for="username">
+                        <p class="m-0 " id="username">enter username:</p>
+                    </label>
                     <input type="text" class="pl-1" id="username" placeholder="username" name="username">
                 </section>
                 <section>
-                    <label for="comment"><p class="m-0 " id="username">enter comment:</p></label>
+                    <label for="comment">
+                        <p class="m-0 " id="username">enter comment:</p>
+                    </label>
                     <br>
                     <textarea id="comment" cols="30" rows="5" name="comment"></textarea>
                 </section>
-                <button type="button" class="mt-2 btn btn-outline-dark">Submit</button>
+                <button type="submit" class="mt-2 btn btn-outline-dark">Submit</button>
                 <a href="/comments"><button type="button" class="mt-2 btn btn-outline-dark">Back</button></a>
                 <hr>
             </form>

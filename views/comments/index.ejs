@@ -1,19 +1,21 @@
 <%- include('../partials/head')%>
 
     <%- include('../partials/navbar')%>
-        <section class="container mt-5 d-flex flex-column items-center justify-center rounded-lg p-5 border border-dark mx-auto">
+        <section
+            class="container-fluid mt-5 d-flex flex-column items-center justify-center rounded-lg p-5 border border-dark mx-auto">
             <h1>Comments</h1>
-            <ul>
+            <ul class="list-group-flush list-unstyled">
                 <hr>
                 <% for(let c of comments) {%>
-                    <li>
-                        <%=c.comment%> - <b>
+                    <li class="list-none list-group-item-action list-group-item-light p-2 rounded-lg my-2 ">
+                        <%=c.comment%><br> - <b>
                                 <%=c.username%>
                             </b>
-                            <a href="/comments/<%= c.id %>">details</a>
+
+                            - <a href="/comments/<%= c.id %>">details</a>
                     </li>
                     <% }%>
-                    <hr>
+                        <hr>
             </ul>
             <a href="/comments/new"><button class="btn btn-outline-dark">New Comment</button></a>
         </section>
