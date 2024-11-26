@@ -1,15 +1,14 @@
 const path = require('path');
 const methodOverride = require('method-override')
-const { v4: uuid } = require('uuid'); //For generating ID's
+const { v4: uuid } = require('uuid'); //universele unieke ID's aanmaken!:D
 const express = require('express');
 const app = express();
 const port = 3000;
 
-
 app.use(express.static(path.join(__dirname, 'public')))
 // parse form data in POST request body:
 app.use(express.urlencoded({ extended: true }))
-// parse incoming JSON in POST request body:
+// parse JSON in POST request body:
 app.use(express.json())
 // om put/patch/delete requests te faken
 app.use(methodOverride('_method'))
@@ -123,8 +122,6 @@ app.delete('/comments/:id', (req, res) => {
     comments = comments.filter(c => c.id !== id);
     res.redirect('/comments');
 })
-
-
 
 app.get('/', (req, res) => {
     res.send("GET /tacos response")
