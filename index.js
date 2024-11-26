@@ -5,19 +5,19 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
-// Middleware i.e. functions that run between request and response
+
 app.use(express.static(path.join(__dirname, 'public')))
-//To parse form data in POST request body:
+// parse form data in POST request body:
 app.use(express.urlencoded({ extended: true }))
-// To parse incoming JSON in POST request body:
+// parse incoming JSON in POST request body:
 app.use(express.json())
-// To 'fake' put/patch/delete requests:
+// om put/patch/delete requests te faken
 app.use(methodOverride('_method'))
-// Views folder and EJS setup:
+// views en EJS instellen
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
-// Our fake database:
+// de fake database
 let comments = [
     {
         id: uuid(),
@@ -61,19 +61,19 @@ let comments = [
     }
 ]
 // **********************************
-// INDEX - renders multiple comments
+// INDEX - render all comments
 // **********************************
 app.get('/comments', (req, res) => {
     res.render('comments/index', { comments });
 })
 // **********************************
-// NEW - renders a form
+// NEW - render een form voor een nieuwe comment
 // **********************************
 app.get('/comments/new', (req, res) => {
     res.render('comments/new');
 })
 // **********************************
-// CREATE - creates a new comment
+// CREATE - maak een nieuwe comment
 // **********************************
 app.post('/comments', (req, res) => {
     const { username, comment } = req.body;
@@ -81,23 +81,31 @@ app.post('/comments', (req, res) => {
     res.redirect('/comments');
 })
 // *******************************************
-// SHOW - details about one particular comment
+// SHOW - details van een specifiek comment
 // *******************************************
 app.get('/comments/:id', (req, res) => {
     const { id } = req.params;
     const comment = comments.find(c => c.id === id);
-    res.render('comments/show', { comment })
+    if (!comment) {
+        res.render('comments/notfound', { id })
+    } else {
+        res.render('comments/show', { comment });
+    }
 })
 // *******************************************
-// EDIT - renders a form to edit a comment
+// EDIT - render een form om een comment te bewerken
 // *******************************************
 app.get('/comments/:id/edit', (req, res) => {
     const { id } = req.params;
     const comment = comments.find(c => c.id === id);
-    res.render('comments/edit', { comment })
+    if (!comment) {
+        res.render('comments/notfound', { id })
+    } else {
+        res.render('comments/edit', { comment })
+    }
 })
 // *******************************************
-// UPDATE - updates a particular comment
+// UPDATE - update een comment
 // *******************************************
 app.patch("/comments/:id", (req, res) => {
     const { id } = req.params;
@@ -108,7 +116,7 @@ app.patch("/comments/:id", (req, res) => {
 });
 
 // *******************************************
-// DELETE/DESTROY- removes a single comment
+// DELETE/DESTROY- verwijder een comment
 // *******************************************
 app.delete('/comments/:id', (req, res) => {
     const { id } = req.params;
@@ -138,6 +146,7 @@ module.exports = app;
 // GET /comments/:id - Get one comment (using ID)
 // PATCH /comments/:id - Update one comment
 // DELETE /comments/:id - Destroy one comment
+
 
 
 
